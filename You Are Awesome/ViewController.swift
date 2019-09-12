@@ -13,6 +13,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var awesomeImageView: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var soundSwitch: UISwitch!
+    
     
     var awesomePlayer =  AVAudioPlayer()
     var index = -1
@@ -27,7 +29,7 @@ class ViewController: UIViewController {
         print("The View Loaded!")
     }
     
-    func nonRepeatingRandon(lastNumber: Int, maxValue: Int) -> Int {
+    func nonRepeatingNumber(lastNumber: Int, maxValue: Int) -> Int {
         var newIndex: Int
         repeat {
             newIndex = Int.random(in: 0..<maxValue)
@@ -52,7 +54,14 @@ class ViewController: UIViewController {
         }
 
     }
-
+    
+    @IBAction func soundSwitchPressed(_ sender: UISwitch) {
+        if soundSwitch.isOn == false && soundIndex != -1 {
+            awesomePlayer.stop()
+        }
+    }
+    
+    
     @IBAction func showMessagePresses(_ sender: UIButton) {
         
         let messages = ["You Are Awesome!",
@@ -69,19 +78,26 @@ class ViewController: UIViewController {
         
         
         // show a message
-        index = nonRepeatingRandon(lastNumber: index, maxValue: messages.count)
+        index = nonRepeatingNumber(lastNumber: index, maxValue: messages.count)
         messageLabel.text = messages[index]
         
         // show an image
-        imageIndex = nonRepeatingRandon(lastNumber: imageIndex, maxValue: numberOfImages)
+        imageIndex = nonRepeatingNumber(lastNumber: imageIndex, maxValue: numberOfImages)
         awesomeImageView.image = UIImage(named: "image\(imageIndex)")
         
-        // Get a random number to use in our soundName file
-        soundIndex = nonRepeatingRandon(lastNumber: soundIndex, maxValue: numberOfSounds)
+
+        //if soundSwitch.isOn == true {
+        if soundSwitch.isOn {
+            
+            //Get a random number to use in our soundName file
+            soundIndex = nonRepeatingNumber(lastNumber: soundIndex, maxValue: numberOfSounds)
+            
+            //Play a sound
+            let soundName = "sound\(soundIndex)"
+            
+            playSound(soundName: soundName, audioPlayer: &awesomePlayer)
+        }
         
-        // play a sound
-        let soundName = "sound\(soundIndex)"
-        playSound(soundName: soundName, audioPlayer: &awesomePlayer)
     }
 }
 
