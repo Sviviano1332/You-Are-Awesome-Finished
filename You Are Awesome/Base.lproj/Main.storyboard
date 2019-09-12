@@ -18,16 +18,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kqn-kg-GUa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kqn-kg-GUa">
                                 <rect key="frame" x="0.0" y="28" width="375" height="103"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="103" id="rkN-oP-dBu"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="30"/>
                                 <color key="textColor" red="0.96993559598922729" green="0.10695903467635141" blue="0.031315921600943104" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ozb-V4-Acm">
-                                <rect key="frame" x="129" y="139" width="117" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ozb-V4-Acm">
+                                <rect key="frame" x="16" y="139" width="343" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="sTN-TX-JiF"/>
+                                    <constraint firstAttribute="width" constant="343" id="v5g-60-c0F"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <state key="normal" title="Show Message">
                                     <color key="titleColor" red="0.96993559600000001" green="0.66159938929999995" blue="0.039947806320000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -36,11 +41,27 @@
                                     <action selector="showMessagePresses:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KoG-eP-718"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G7O-jb-bGk">
+                                <rect key="frame" x="16" y="188" width="343" height="437"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ozb-V4-Acm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2T2-jw-cMp"/>
+                            <constraint firstItem="Ozb-V4-Acm" firstAttribute="top" secondItem="Kqn-kg-GUa" secondAttribute="bottom" constant="8" id="6Y4-k4-Mma"/>
+                            <constraint firstItem="Kqn-kg-GUa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Hf7-ef-rRo"/>
+                            <constraint firstItem="G7O-jb-bGk" firstAttribute="top" secondItem="Ozb-V4-Acm" secondAttribute="bottom" constant="14" id="HoP-a7-hle"/>
+                            <constraint firstItem="G7O-jb-bGk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Whq-Lm-c0z"/>
+                            <constraint firstItem="Kqn-kg-GUa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="Xhj-b9-LpU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="G7O-jb-bGk" secondAttribute="trailing" constant="16" id="aYZ-df-BMG"/>
+                            <constraint firstItem="Kqn-kg-GUa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dEA-qe-XTh"/>
+                            <constraint firstItem="G7O-jb-bGk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dPL-Bn-42e"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="G7O-jb-bGk" secondAttribute="bottom" constant="42" id="eXM-Ry-0AE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="awesomeImageView" destination="G7O-jb-bGk" id="0ip-Pq-jYk"/>
                         <outlet property="messageLabel" destination="Kqn-kg-GUa" id="Xm8-kO-FzF"/>
                     </connections>
                 </viewController>
